@@ -25,3 +25,23 @@ mybatis:
 nacos:
   config:
     server-addr: 47.98.175.227:8848
+
+
+rocketmq:
+  producer:
+    isOnOff: on
+    groupName: seckill
+    namesrvAddr: 47.98.175.227:9876
+    maxMessageSize: 4096
+    sendMsgTimeout: 3000
+    retryTimesWhenSendFailed: 2
+
+  #consumer
+  consumer:
+    isOnOff: on
+    groupName: seckill
+    namesrvAddr: 47.98.175.227:9876
+    topics: seckill
+    consumeThreadMin: 20
+    consumeThreadMax: 64
+    consumeMessageBatchMaxSize: 1
