@@ -15,13 +15,13 @@ spring:
   redis:
     redisson:
       file: classpath:config/redisson.yml
-  cloud:
-    nacos:
-      discovery:
-        server-addr=47.98.175.227:8848
 
 
 mybatis:
   config-location: classpath:mybatis-config.xml
   mapper-locations: classpath:mybatis/*.xml
   typeAliasesPackage: com.team.dao
+
+nacos:
+  config:
+    server-addr: 47.98.175.227:8848
