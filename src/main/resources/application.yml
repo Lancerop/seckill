@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8081
 
 spring:
   datasource:
@@ -10,9 +10,15 @@ spring:
     username: root
     # 数据库访问密码
     password: 123456
+  redis:
+    enable: true
+    timeout: 2000 # 连接或读取超时时长（毫秒）
+    redisson:
+      file: classpath:config/redisson.yml
+
 
 mybatis:
-  configuration:
-    map-underscore-to-camel-case: true
-  mapper-locations: mybatis/**/*Mapper.xml
-  typeAliasesPackage: com.bootdo.**.domain
+  config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath:mybatis/*.xml
+  typeAliasesPackage: com.team.dao
+
