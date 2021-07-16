@@ -11,8 +11,6 @@ spring:
     # 数据库访问密码
     password: 123456
   redis:
-    enable: true
-    timeout: 2000 # 连接或读取超时时长（毫秒）
     redisson:
       file: classpath:config/redisson.yml
 

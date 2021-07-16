@@ -11,10 +11,8 @@ import org.springframework.data.redis.core.RedisTemplate;
  * @Date 2021/7/16 下午9:59
  * @Created by muyi
  */
-public class SedissonManage  extends RedisTemplate {
-    private static final Logger log = LoggerFactory.getLogger(SedissonManage.class);
+public class SedissonManage{
     private RedissonClient redissonClient;
-    private String PREFIX = "RDS_LOCK:" + System.getenv("project.name") + ":";
 
     public SedissonManage(RedissonClient redissonClient) {
         this.redissonClient = redissonClient;
