@@ -1,5 +1,7 @@
 package com.team.manager;
 
+import com.team.dao.MemberMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,4 +12,6 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class MemberManager {
+    @Autowired
+    private MemberMapper memberMapper;
 }

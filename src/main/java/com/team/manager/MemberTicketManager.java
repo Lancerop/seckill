@@ -1,5 +1,9 @@
 package com.team.manager;
 
+import com.team.dao.MemberTicketMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 /**
  * @Classname MemberTicketManager
  * @Description TODO
@@ -8,4 +12,8 @@ package com.team.manager;
  */
 @Component
 public class MemberTicketManager {
+
+    @Autowired
+    private MemberTicketMapper memberTicketMapper;
+
 }

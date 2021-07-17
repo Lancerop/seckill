@@ -32,12 +32,12 @@ public class MQConsumerConfiguration {
     @Value("${rocketmq.consumer.consumeThreadMin}")
     private int consumeThreadMin;
     @Value("${rocketmq.consumer.consumeThreadMax}")
-    private int                           consumeThreadMax;
+    private int consumeThreadMax;
     // 订阅指定的 topic
     @Value("${rocketmq.consumer.topics}")
-    private String                        topics;
+    private String topics;
     @Value("${rocketmq.consumer.consumeMessageBatchMaxSize}")
-    private int                           consumeMessageBatchMaxSize;
+    private int consumeMessageBatchMaxSize;
 
     @Autowired
     private MessageListenerHandler mqMessageListenerProcessor;

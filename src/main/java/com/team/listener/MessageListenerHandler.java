@@ -7,6 +7,7 @@ import org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;
 import org.apache.rocketmq.common.message.MessageExt;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -21,7 +22,6 @@ import java.util.List;
 @Component
 public class MessageListenerHandler implements MessageListenerConcurrently {
     private static final Logger LOGGER = LoggerFactory.getLogger(MessageListenerHandler.class);
-    private static String TOPIC = "seckill";
 
     @Override
     public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs,
@@ -31,13 +31,18 @@ public class MessageListenerHandler implements MessageListenerConcurrently {
             return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
         }
         MessageExt messageExt = msgs.get(0);
-        String msg = new String(messageExt.getBody());
-        LOGGER.info("TOPIC:"+messageExt.getTopic());
-        if (messageExt.getTopic().equals(TOPIC)) {
-            // mock 消费逻辑
-            mockConsume(msg);
-        }
 
+        LOGGER.info("TOPIC:"+messageExt.getTopic());
+
+        switch (messageExt.getTopic()){
+            case "seckill":
+                LOGGER.info("[{}]消费",messageExt.getTopic());
+                // TODO
+                break;
+            default:
+                LOGGER.info("[{}]无消费",messageExt.getTopic());
+                break;
+        }
         return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
     }
 
