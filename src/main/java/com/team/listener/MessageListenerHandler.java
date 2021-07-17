@@ -23,6 +23,7 @@ import java.util.List;
 public class MessageListenerHandler implements MessageListenerConcurrently {
     private static final Logger LOGGER = LoggerFactory.getLogger(MessageListenerHandler.class);
 
+    //消费信息
     @Override
     public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs,
                                                     ConsumeConcurrentlyContext context) {
