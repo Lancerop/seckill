@@ -75,11 +75,11 @@ public class GlobalExceptionHandler {
         logger.error("SQL Exception:", e);
         return MyResult.fail(new MyException(CommonErrorCodeEnum.DB_EXCEPTION.getResultCode(), "数据库执行异常"));
     }
-
+/*
     @ExceptionHandler({Exception.class})
     @ResponseBody
     public MyResult<Object> handleException(Exception e) {
         logger.error("内部未知异常:", e);
         return MyResult.fail(new UnknownException(e));
-    }
+    }*/
 }

@@ -1,9 +1,13 @@
 package com.team.controller;
 
+import com.team.DTO.ActivityInventoryDTO;
+import com.team.DTO.InitActivityInventoryDTO;
 import com.team.Service.ActivityService;
+import com.team.common.MyResult;
+import com.team.common.exception.CommonErrorCodeEnum;
+import com.team.common.exception.MyException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Classname ActivityController
@@ -19,7 +23,37 @@ public class ActivityController {
     @Autowired
     private ActivityService activityService;
 
-    // 查询活动库存
+
+
+    /**
+     * 初始化库存
+     * @param initActivityInventoryDTO
+     * @return
+     */
+    @PostMapping("initActivityInventory")
+    @ResponseBody
+    public MyResult initActivityInventory(InitActivityInventoryDTO initActivityInventoryDTO){
+        if(initActivityInventoryDTO == null
+                || initActivityInventoryDTO.getActivityNum() == null
+                || initActivityInventoryDTO.getNum() == null){
+            throw new MyException(CommonErrorCodeEnum.INVALID_PARAM.getResultCode(),CommonErrorCodeEnum.INVALID_PARAM.getResultMsg());
+        }
+        activityService.initActivityInventory(initActivityInventoryDTO.getActivityNum(), initActivityInventoryDTO.getNum());
+        return MyResult.ok();
+    }
+
+
+    /**
+     * 查询活动库存
+     * @return
+     */
+    @GetMapping("getActivityInventory")
+    @ResponseBody
+    public MyResult<ActivityInventoryDTO> getActivityInventory(){
+        ActivityInventoryDTO activityInventoryDTO = activityService.getActivityInventory();
+        return MyResult.ok(activityInventoryDTO);
+    }
+
 
     // 抢票
 

@@ -1,5 +1,6 @@
 package com.team.Service.impl;
 
+import com.team.DTO.ActivityInventoryDTO;
 import com.team.Service.ActivityService;
 import com.team.dao.MemberTicketMapper;
 import com.team.manager.ActivityManage;
@@ -30,5 +31,22 @@ public class ActivityServiceImpl implements ActivityService {
     @Autowired
     private MemberTicketManager memberTicketManager;
 
+    @Override
+    public void initActivityInventory(Integer activityNum, Long num) {
+        activityManage.initActivityInventory(activityNum,num);
+    }
 
+    @Override
+    public ActivityInventoryDTO getActivityInventory() {
+        ActivityInventoryDTO activityInventoryDTO = new ActivityInventoryDTO();
+        // 查询活动一库存
+        Long activityOneNum = activityManage.getActivityInventory(1);
+        // 查询活动二库存
+        Long activityTwoNum = activityManage.getActivityInventory(2);
+
+        activityInventoryDTO.setNumberOne(activityOneNum);
+        activityInventoryDTO.setNumberTwo(activityTwoNum);
+
+        return activityInventoryDTO;
+    }
 }
