@@ -1,5 +1,6 @@
 package com.team.Service.impl;
 
+import com.alibaba.nacos.api.config.annotation.NacosValue;
 import com.team.DTO.ActivityInventoryDTO;
 import com.team.DTO.BookActivityDTO;
 import com.team.Service.ActivityService;
@@ -11,6 +12,8 @@ import com.team.manager.MemberTypeManager;
 import org.apache.rocketmq.common.message.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
 
 /**
  * @Classname ActivityServiceImpl
@@ -32,6 +35,10 @@ public class ActivityServiceImpl implements ActivityService {
 
     @Autowired
     private MemberTicketManager memberTicketManager;
+
+
+    @NacosValue(value = "", autoRefreshed = true)
+    private Date beginTime;
 
     @Override
     public void initActivityInventory(Integer activityNum, Long num) {
@@ -56,7 +63,14 @@ public class ActivityServiceImpl implements ActivityService {
     public Integer bookActivity(BookActivityDTO activityDTO) {
         // 校验活动时间
 
-        //
+        // 判断用户key2 是否存在
+
+        // 判断库存
+
+        // 扣减库存
+
+        // 判断是否是会员
+
         return null;
     }
 
