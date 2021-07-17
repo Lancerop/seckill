@@ -1,6 +1,8 @@
 package com.team.Service;
 
 import com.team.DTO.ActivityInventoryDTO;
+import com.team.DTO.BookActivityDTO;
+import org.apache.rocketmq.common.message.Message;
 
 /**
  * @Classname ActivityService
@@ -18,8 +20,12 @@ public interface ActivityService {
     ActivityInventoryDTO getActivityInventory();
 
     // 抢票
+    Integer bookActivity(BookActivityDTO activityDTO);
 
     // 查询抢票结果
 
     // 代替定时处理会员身份
+
+
+    void dealMessage(Message message);
 }

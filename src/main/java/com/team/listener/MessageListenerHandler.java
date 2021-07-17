@@ -1,12 +1,14 @@
 package com.team.listener;
 
 import com.alibaba.nacos.client.naming.utils.CollectionUtils;
+import com.team.Service.ActivityService;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
 import org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;
 import org.apache.rocketmq.common.message.MessageExt;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -23,6 +25,8 @@ import java.util.List;
 public class MessageListenerHandler implements MessageListenerConcurrently {
     private static final Logger LOGGER = LoggerFactory.getLogger(MessageListenerHandler.class);
 
+    @Autowired
+    private ActivityService activityService;
     //消费信息
     @Override
     public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs,
@@ -38,6 +42,7 @@ public class MessageListenerHandler implements MessageListenerConcurrently {
         switch (messageExt.getTopic()){
             case "seckill":
                 LOGGER.info("[{}]消费",messageExt.getTopic());
+                activityService.dealMessage(messageExt);
                 // TODO
                 break;
             default:

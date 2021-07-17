@@ -1,6 +1,7 @@
 package com.team.controller;
 
 import com.team.DTO.ActivityInventoryDTO;
+import com.team.DTO.BookActivityDTO;
 import com.team.DTO.InitActivityInventoryDTO;
 import com.team.Service.ActivityService;
 import com.team.common.MyResult;
@@ -54,6 +55,17 @@ public class ActivityController {
         return MyResult.ok(activityInventoryDTO);
     }
 
+    @PostMapping("bookActivity")
+    @ResponseBody
+    public MyResult<Integer> bookActivity(BookActivityDTO activityDTO){
+        if(activityDTO == null
+                || activityDTO.getActivityNum() == null
+                || activityDTO.getMemberId() == null){
+            throw new MyException(CommonErrorCodeEnum.INVALID_PARAM.getResultCode(),CommonErrorCodeEnum.INVALID_PARAM.getResultMsg());
+        }
+        Integer result = activityService.bookActivity(activityDTO);
+        return MyResult.ok(result);
+    }
 
     // 抢票
 
