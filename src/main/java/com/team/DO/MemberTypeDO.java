@@ -2,26 +2,18 @@ package com.team.DO;
 
 import com.team.common.DO.MyBaseDO;
 
-public class MemberType extends MyBaseDO {
-    private Long memberID;
+public class MemberTypeDO extends MyBaseDO {
+    private Long memberId;
     private String typeName;
     private int isRob;
 
-    public MemberType() {
+
+    public Long getMemberId() {
+        return memberId;
     }
 
-    public MemberType(Long memberID, String typeName, int isRob) {
-        this.memberID = memberID;
-        this.typeName = typeName;
-        this.isRob = isRob;
-    }
-
-    public Long getMemberID() {
-        return memberID;
-    }
-
-    public void setMemberID(Long memberID) {
-        this.memberID = memberID;
+    public void setMemberId(Long memberId) {
+        this.memberId = memberId;
     }
 
     public String getTypeName() {
@@ -43,7 +35,7 @@ public class MemberType extends MyBaseDO {
     @Override
     public String toString() {
         return "MemberType{" +
-                "memberID=" + memberID +
+                "memberId=" + memberId +
                 ", typeName='" + typeName + '\'' +
                 ", isRob=" + isRob +
                 '}';

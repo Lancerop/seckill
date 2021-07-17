@@ -2,19 +2,13 @@ package com.team.DO;
 
 import com.team.common.DO.MyBaseDO;
 
-public class MemberTicket extends MyBaseDO {
+import java.util.Date;
+
+public class MemberTicketDO extends MyBaseDO {
     private Long memberId;
-    private String useTime;
+    private Date useTime;
     private int status;
 
-    public MemberTicket() {
-    }
-
-    public MemberTicket(Long memberId, String useTime, int status) {
-        this.memberId = memberId;
-        this.useTime = useTime;
-        this.status = status;
-    }
 
     public Long getMemberId() {
         return memberId;
@@ -24,11 +18,11 @@ public class MemberTicket extends MyBaseDO {
         this.memberId = memberId;
     }
 
-    public String getUseTime() {
+    public Date getUseTime() {
         return useTime;
     }
 
-    public void setUseTime(String useTime) {
+    public void setUseTime(Date useTime) {
         this.useTime = useTime;
     }
 

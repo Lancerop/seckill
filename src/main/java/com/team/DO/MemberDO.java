@@ -3,22 +3,12 @@ package com.team.DO;
 
 import com.team.common.DO.MyBaseDO;
 
-public class Member extends MyBaseDO {
+public class MemberDO extends MyBaseDO {
 
     private String memberName;
     private String nickName;
     private int sex;
     private int status;
-
-    public Member() {
-    }
-
-    public Member(String memberName, String nickName, int sex, int status) {
-        this.memberName = memberName;
-        this.nickName = nickName;
-        this.sex = sex;
-        this.status = status;
-    }
 
     public String getMemberName() {
         return memberName;
